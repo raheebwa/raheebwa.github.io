@@ -1,8 +1,8 @@
 #-------------------------------
 # General Site Settings
 
-title: Hi, I am Ramadhan
-description: Welcome to My blog. # this means to ignore newlines until "baseurl:"
+title: Ramadhan Aheebwa's Online Place
+description: I'm Aheebwa Ramadhan Badr, a Ugandan-based freelance developer. I craft lines of code into user friendly, beautiful, multi-functional and mostly importantly easy to use applications for the web , mobile and desktop. My main stacks are PHP/Laravel and Ruby/Rails among many others. As both an engineer and designer I help people bring their ideas into reality (My Work), as I craft them uniquely to their preferences. Contact Me today, I would be glad to hear from you. # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://raheebwa.com" # the base hostname & protocol for your site, e.g. http://example.com
 
