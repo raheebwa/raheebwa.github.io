@@ -33,12 +33,12 @@ instafeed: false # To enable the instafeed, use the value true. To turn off use 
 
 #-------------------------------
 # Google Analytics
-google-analytics: # Add your identifier. For example UA-99631805-1.
+google-analytics: UA-147514520-1 # Add your identifier. For example UA-99631805-1.
 
 
 #-------------------------------
 # Newsletter
-mailchimp: # Add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
+mailchimp: https://raheebwa.us4.list-manage.com/subscribe/post?u=e74dc7ba0ae22a4d02a3a40e6&amp;id=fc8bbb3ede # Add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
 
 
 #-------------------------------
