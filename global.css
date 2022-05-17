@@ -1,0 +1,58 @@
+html, body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	padding: 8px;
+}
+
+#background {
+    pointer-events: none;
+}
+
+@keyframes ping {
+	0% {
+		transform: scale(0.0);
+		opacity: 0.4;
+	}
+	100% {
+		transform: scale(1.2);
+		opacity: 0;
+	}
+}
+
+.text-purple {
+	color: #6f42c1 !important;
+}
+.bg-purple {
+	background-color: #6f42c1 !important;
+}
+
+.text-blue {
+	color: #007bff !important;
+}
+
+.text-pink {
+	color: #e83e8c !important;
+}
+
+.bg-pink {
+	background-color: #e83e8c !important;
+}
+
+/* red */
+.text-red {
+	color: #dc3545 !important;
+}
+
+/* teal */
+.text-teal {
+	color: #28a745 !important;
+}
+
+/* cyan */
+.text-cyan {
+	color: #17a2b8 !important;
+}
