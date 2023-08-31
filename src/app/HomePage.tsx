@@ -1,12 +1,14 @@
 'use client'
 import { Center } from '@chakra-ui/react'
 import React from 'react'
-import ComingSoon from './ComingSoon'
+import Countdown from './ComingSoon'
 
 const HomePage = () => {
   return (
     <Center as="main" h="100vh">
-        <ComingSoon />
+        <Countdown
+          endDateTime="2023-09-05T00:00:00.000Z"
+        />
     </Center>
   )
 }

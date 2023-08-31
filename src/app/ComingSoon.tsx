@@ -1,42 +1,77 @@
-import { Box, Heading } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { Box, HStack, Heading, Stack, Text } from '@chakra-ui/react';
 
-// a stop clocking showing the time left to the launch of the website
+type CountdownProps = {
+    endDateTime: string;
+};
 
-const ComingSoon = () => {
-    const [timeLeft, setTimeLeft] = React.useState(1000000)
-    const [timeLeftString, setTimeLeftString] = React.useState('')
-    const [timeLeftStringArray, setTimeLeftStringArray] = React.useState([])
+type TimeLeft = {
+    days: string;
+    hours: string;
+    minutes: string;
+    seconds: string;
+};
 
-    React.useEffect(() => {
-        const timer = setTimeout(() => {
-            setTimeLeft(timeLeft - 1)
-        }, 1000)
-        return () => clearTimeout(timer)
-    }, [timeLeft])
+const Countdown: React.FC<CountdownProps> = ({ endDateTime }) => {
+    const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: '00', hours: '00', minutes: '00', seconds: '00' });
 
-    React.useEffect(() => {
-        const days = Math.floor(timeLeft / (60 * 60 * 24))
-        const hours = Math.floor((timeLeft % (60 * 60 * 24)) / (60 * 60))
-        const minutes = Math.floor((timeLeft % (60 * 60)) / 60)
-        const seconds = Math.floor(timeLeft % 60)
+    useEffect(() => {
+        const calculateTimeLeft = () => {
+            const now = new Date();
+            const endTime = new Date(endDateTime);
+            const diff = endTime.getTime() - now.getTime();
 
-        setTimeLeftString(`${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`)
-        setTimeLeftStringArray([days, hours, minutes, seconds])
-    }, [timeLeft])
+            if (diff <= 0) {
+                return { days: '00', hours: '00', minutes: '00', seconds: '00' };
+            }
 
-    React.useEffect(() => {
-        setTimeLeft(60 * 60 * 24 * 7)
-    }, [])
+            const days = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+            const hours = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+            const minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+            const seconds = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
 
+            return { days, hours, minutes, seconds };
+        };
 
-  return (
-    <Box as="section">
-        <Heading as="h1" fontSize="3xl" textAlign="center" mb="1rem">Currently Under Upgrade</Heading>
-        <Heading as="h2" fontSize="xl" textAlign="center" mb="1rem">{"Aheebwa Ramadhan's Portfolio"}</Heading>
-        <Heading as="h3" fontSize="l" textAlign="center" mb="1rem">{`Will be live in ${timeLeftString}`}</Heading>
-    </Box>
-  )
-}
+        setTimeLeft(calculateTimeLeft());
 
-export default ComingSoon
+        const timer = setInterval(() => {
+            setTimeLeft(calculateTimeLeft());
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, [endDateTime]);
+
+    return (
+        <Stack spacing={6} align={"center"}>
+            <Heading as="h1" size="xl" >
+                {"Hi is this is Ramadhan, and I'm a Full Stack Developer"}
+            </Heading>
+            <Heading as="h2" size="lg" >
+                Currently working on my portfolio ..., it will be ready in:
+            </Heading>
+            <HStack as="section" spacing="4">
+                {Object.keys(timeLeft).map((key, index) => (
+                    <Box
+                        key={index}
+                        fontWeight="bold"
+                        color="white"
+                        bg="black"
+                        p="8"
+                        borderRadius="md"
+                        textAlign={"center"}
+                    >
+                        <Text fontSize="6xl">
+                            {timeLeft[key as keyof TimeLeft]}
+                        </Text>
+                        <Text>
+                            {key.toUpperCase()}
+                        </Text>
+                    </Box>
+                ))}
+            </HStack>
+        </Stack>
+    );
+};
+
+export default Countdown;
