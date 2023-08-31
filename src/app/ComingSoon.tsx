@@ -43,28 +43,28 @@ const Countdown: React.FC<CountdownProps> = ({ endDateTime }) => {
     }, [endDateTime]);
 
     return (
-        <Stack spacing={6} align={"center"}>
-            <Heading as="h1" size="xl" >
-                {"Hi is this is Ramadhan, and I'm a Full Stack Developer"}
+        <Stack spacing={[2, 4, 6]} align={"center"}>
+            <Heading as="h1" size={["s", "s", "xl"]} >
+                {"Hi, this is Ramadhan, and I'm a Full Stack Developer"}
             </Heading>
-            <Heading as="h2" size="lg" >
+            <Heading as="h2" size={["xs", "s", "lg"]} >
                 Currently working on my portfolio ..., it will be ready in:
             </Heading>
-            <HStack as="section" spacing="4">
+            <HStack as="section" spacing={[2, 2, 4]}>
                 {Object.keys(timeLeft).map((key, index) => (
                     <Box
                         key={index}
                         fontWeight="bold"
                         color="white"
                         bg="black"
-                        p="8"
+                        p={[2, 4, 8]}
                         borderRadius="md"
                         textAlign={"center"}
                     >
-                        <Text fontSize="6xl">
+                        <Text fontSize={["xl", "3xl", "6xl"]}>
                             {timeLeft[key as keyof TimeLeft]}
                         </Text>
-                        <Text>
+                        <Text fontSize={["s", "lg", "xl"]}>
                             {key.toUpperCase()}
                         </Text>
                     </Box>
